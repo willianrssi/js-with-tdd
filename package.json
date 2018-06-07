@@ -1,0 +1,24 @@
+{
+  "name": "js-tdd",
+  "version": "1.0.0",
+  "description": "code of course js with TDD on practice ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willianrssi/js-with-tdd.git"
+  },
+  "keywords": [
+    "js",
+    "TDD",
+    "library"
+  ],
+  "author": "Willian Rodrigues <willianrssi@gmail.com> (https://github.com/willianrssi)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/willianrssi/js-with-tdd/issues"
+  },
+  "homepage": "https://github.com/willianrssi/js-with-tdd#readme"
+}
