@@ -4,6 +4,8 @@
   "description": "code of course js with TDD on practice ",
   "main": "index.js",
   "scripts": {
+    "lint": "node_modules/.bin/eslint src/*.js",
+    "prepush": "npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +22,13 @@
   "bugs": {
     "url": "https://github.com/willianrssi/js-with-tdd/issues"
   },
-  "homepage": "https://github.com/willianrssi/js-with-tdd#readme"
+  "homepage": "https://github.com/willianrssi/js-with-tdd#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "husky": "^0.14.3"
+  }
 }
