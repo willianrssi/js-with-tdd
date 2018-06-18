@@ -5,10 +5,21 @@
   "main": "index.js",
   "scripts": {
     "lint": "node_modules/.bin/eslint src/*.js",
-    "prepush": "npm run lint",
+    "prepush": "npm run lint && npm run test:coverage",
     "build": "./node_modules/.bin/webpack --colors --progress",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha test/**/*.spec.js --require babel-register",
+    "test:watch": "./node_modules/.bin/mocha test/**/*.spec.js --require babel-register --watch",
+    "test:coverage": "nyc mocha",
     "server": "./node_modules/.bin/webpack-dev-server --inline --open"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "functions": 80,
+    "lines": 80,
+    "require": [
+      "babel-register"
+    ],
+    "reporter": ["text", "html"]
   },
   "repository": {
     "type": "git",
@@ -28,13 +39,19 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-istanbul": "^4.1.6",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-es2015-native-modules": "^6.9.4",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
     "husky": "^0.14.3",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.4",

@@ -1,5 +1,12 @@
-const teste = {
-  teste: 'teste'
+const FizzBuzz = (num) => {
+  if (num === 0) return num;
+  if (num % 3 === 0 && num % 5 === 0) return 'FizzBuzz';
+  if (num % 3 === 0) return 'Fizz';
+  if (num % 5 === 0) return 'Buzz';
+
+  return num;
 };
 
-console.log(teste);
+const bla = () => 'boo';
+
+export default FizzBuzz;
