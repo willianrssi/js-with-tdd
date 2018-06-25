@@ -1,36 +1,22 @@
 const { join } = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
   entry: {
     filename: join(__dirname, '.', 'src', 'index.js')
   },
   output: {
     path: join(__dirname, '.', 'dist'),
-    filename: 'bundle.js'
+    libraryTarget: 'umd',
+    library: 'spotifyWrapper'
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: [
-            'es2015'
-          ]
-        }
+        loader: 'babel-loader'
       }
     ]
-  },
-  plugins: [
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: { warnings: false },
-        output: { comments: false },
-        sourceMap: true
-      }
-    })
-  ]
+  }
 };
