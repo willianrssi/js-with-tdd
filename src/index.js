@@ -1,10 +1,24 @@
-const FizzBuzz = (num) => {
-  if (num === 0) return num;
-  if (num % 3 === 0 && num % 5 === 0) return 'FizzBuzz';
-  if (num % 3 === 0) return 'Fizz';
-  if (num % 5 === 0) return 'Buzz';
+import {
+  search,
+  searchAlbums,
+  searchArtists,
+  searchTracks,
+  searchPlayLists
+} from './search';
 
-  return num;
+import {
+  getAlbum,
+  getAlbums,
+  getAlbumTracks
+} from './album';
+
+module.exports = {
+  search,
+  searchAlbums,
+  searchArtists,
+  searchTracks,
+  searchPlayLists,
+  getAlbum,
+  getAlbums,
+  getAlbumTracks
 };
-
-export default FizzBuzz;
