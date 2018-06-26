@@ -2,12 +2,12 @@ const { join } = require('path');
 
 module.exports = {
   entry: {
-    filename: join(__dirname, '.', 'src', 'index.js')
+    filename: join(__dirname, 'index.js')
   },
   output: {
     path: join(__dirname, '.', 'dist'),
     libraryTarget: 'umd',
-    library: 'spotifyWrapper'
+    library: 'SpotifyWrapper'
   },
   devtool: 'source-map',
   module: {
