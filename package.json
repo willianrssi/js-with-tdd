@@ -1,16 +1,21 @@
 {
-  "name": "js-tdd",
+  "name": "spotify-wrapper",
   "version": "1.0.0",
   "description": "code of course js with TDD on practice ",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "lint": "node_modules/.bin/eslint src/*.js",
-    "prepush": "npm run lint && npm run test:coverage",
-    "build": "./node_modules/.bin/webpack --colors --progress",
+    "prepush": "npm run lint && npm run test",
+    "clear": "rimraf lib",
+    "build": "npm run clear && babel --out-dir lib src ",
+    "build:watch": "npm run build -- --watch",
+    "build:umd": "webpack --output-filename spotify-wrapper.umd.js",
+    "build:all": "npm run build && npm run build:umd",
     "test": "./node_modules/.bin/mocha test/**/*.spec.js --require babel-register",
     "test:watch": "./node_modules/.bin/mocha test/**/*.spec.js --require babel-register --watch",
     "test:coverage": "nyc mocha",
-    "server": "./node_modules/.bin/webpack-dev-server --inline --open"
+    "server": "./node_modules/.bin/webpack-dev-server --inline --open",
+    "coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls"
   },
   "nyc": {
     "check-coverage": true,
@@ -19,7 +24,10 @@
     "require": [
       "babel-register"
     ],
-    "reporter": ["text", "html"]
+    "reporter": [
+      "text",
+      "html"
+    ]
   },
   "repository": {
     "type": "git",
@@ -37,6 +45,7 @@
   },
   "homepage": "https://github.com/willianrssi/js-with-tdd#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-istanbul": "^4.1.6",
@@ -44,6 +53,7 @@
     "babel-preset-es2015-native-modules": "^6.9.4",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
+    "coveralls": "^3.0.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.12.0",
@@ -51,10 +61,16 @@
     "eslint-plugin-react": "^7.9.1",
     "husky": "^0.14.3",
     "mocha": "^5.2.0",
+    "node-fetch": "^2.1.2",
     "nyc": "^12.0.2",
+    "rimraf": "^2.6.2",
+    "sinon": "2.1.0",
+    "sinon-chai": "2.9.0",
+    "sinon-stub-promise": "^4.0.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.4",
     "webpack-dev-server": "^3.1.4"
-  }
+  },
+  "dependencies": {}
 }
